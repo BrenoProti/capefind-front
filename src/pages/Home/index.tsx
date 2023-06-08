@@ -26,11 +26,12 @@ const Home: React.FC = () => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <SearchIcon />
+                <SearchIcon style={{ transform: 'rotate(90deg)'}}/>
               </InputAdornment>
             ),
           }}
-          variant="filled"
+          variant="outlined"
+          margin="none"
         />
 
         <div className="call">
