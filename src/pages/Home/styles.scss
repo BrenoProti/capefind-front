@@ -1,0 +1,58 @@
+.wrapper {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    .wave-top img {
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 100vw;
+        pointer-events: none;
+    }
+
+    .wave-bottom img {
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100vw;
+        pointer-events: none;
+    }
+
+    .container {
+        z-index: 2;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 720px;
+
+        .slogan {
+            font-size: 1rem;
+            color: var(--blue-700);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+
+            .searchIcon {
+                transform: rotate(90deg);
+            }
+        }
+
+        .call {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    }
+}
