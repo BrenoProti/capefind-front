@@ -1,0 +1,34 @@
+.articleData {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  color: var(--text);
+  background: var(--bg-blue);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow-y: scroll !important;
+  height: 100% !important;
+  max-height: 70vh !important;
+
+  .article-title, .articleBadge-editionMeta-doi-copyLink {
+    text-align: center !important;
+
+    span {
+      text-align: center;
+    }
+  }
+
+}
+
+.articlesActions {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}

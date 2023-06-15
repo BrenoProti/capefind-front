@@ -25,9 +25,13 @@ const Header = ({ searchString }: HeaderProps) => {
     setError('');
   }
 
+  const goToHome = () => {
+    navigate('/');
+  }
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
+      <div className={styles.imageContainer} onClick={() => goToHome()}>
         <img src={Logo} alt="Logo" />
       </div>
 

@@ -6,6 +6,14 @@
   height: 80px;
   width: 100%;
 
+  .imageContainer {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 
   .searchInput {
     width: 100%;
