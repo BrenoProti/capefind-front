@@ -18,11 +18,6 @@ const Card: React.FC<CardProps> = ({ cardItem }) => {
   const location = useLocation();
   const search = new URLSearchParams(location.search).get('search');
 
-  const getDateYear = (date: string) => {
-    const dateObj = new Date(date);
-    return dateObj.getFullYear();
-  };
-
   const descriptionFiltered =
     cardItem.paragraphs && cardItem.paragraphs.join(' ').length > 350
       ? `${cardItem.paragraphs.join(' ').slice(0, 350)}...`

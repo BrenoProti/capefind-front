@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import styles from './styles.module.scss';
 import Header from '../../components/Header';
-import mockFile from '../../mocks/results.json';
 import Card from '../../components/Card';
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
