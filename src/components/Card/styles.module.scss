@@ -80,3 +80,25 @@
     }
   }
 }
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  background-color: var(--white);
+  color: var(--main-blue);
+  border: 2px solid var(--main-blue);
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  &:first-child {
+    margin-left: 0.5rem;
+  }
+}
+
+.tagWrapper {
+  display: flex;
+  justify-content: end;
+}

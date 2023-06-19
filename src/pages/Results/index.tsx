@@ -8,9 +8,11 @@ import api from '../../api/api';
 const ResultsPage: React.FC = () => {
   const location = useLocation();
   const search = new URLSearchParams(location.search).get('search');
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<any[]>([]);
+  const [highScore, setHighScore] = useState(0);
 
-  useEffect(() => {
+
+    useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await api.post(
@@ -25,6 +27,9 @@ const ResultsPage: React.FC = () => {
         );
         const content = response.data.content;
         setData(content || []);
+        if (content && content.length) {
+            setHighScore(content[0].score);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -46,7 +51,7 @@ const ResultsPage: React.FC = () => {
 
       <div className={styles.results}>
         {data.map((item: any, index: number) => (
-          <Card cardItem={item} key={index + item.articleId} />
+          <Card cardItem={item} key={index + item.articleId} highScore={highScore} />
         ))}
 
         {/* {mockFile.data.map((item: any) => (

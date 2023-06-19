@@ -54,7 +54,7 @@ const Home: React.FC = () => {
           id="search-input"
           fullWidth
           color="primary"
-          label={isSmallScreen ? "Palavra chave" : "Digite a palavra chave que deseja buscar, nos cuidaremos do resto!"}
+          label={isSmallScreen ? "Termo ou frase" : "Digite o termo ou frase que deseja buscar, nos cuidaremos do resto!"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">

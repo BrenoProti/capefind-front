@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
+import {Tooltip} from "@mui/material";
 
 interface CardProps {
   cardItem: {
@@ -12,9 +13,10 @@ interface CardProps {
     };
     paragraphs: string[];
   };
+  highScore: number;
 }
 
-const Card: React.FC<CardProps> = ({ cardItem }) => {
+const Card: React.FC<CardProps> = ({ cardItem , highScore}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const search = new URLSearchParams(location.search).get('search');
@@ -24,17 +26,29 @@ const Card: React.FC<CardProps> = ({ cardItem }) => {
       ? `${cardItem.paragraphs.join(' ').slice(0, 350)}...`
       : (cardItem.paragraphs && cardItem.paragraphs.join(' ')) || '';
 
+  const calculateScore = (comparisonValue: number) => {
+    const percentage = (comparisonValue / highScore) * 100;
+    if (percentage >= 80) {
+      return 'Score alto';
+    }
+    if (percentage >= 50) {
+      return 'Score médio';
+    }
+    return 'Score baixo';
+  }
+
   const handleCardClick = () => {
     navigate(`/article?search=${search}&id=${cardItem.articleId}`);
   };
 
   return (
+
     <div className={styles.card} onClick={handleCardClick}>
       <div className={styles.cardHead}>
         <h3>{cardItem.article.title}</h3>
-
-        <span>{cardItem.score}</span>
       </div>
+
+
 
       <div className={styles.cardInfo}>
         <p>
@@ -53,6 +67,14 @@ const Card: React.FC<CardProps> = ({ cardItem }) => {
       <div className={styles.cardDescription}>
         <h3 className={styles.sectionTitle}>{cardItem.section}</h3>
         <p className={styles.description}>{descriptionFiltered}</p>
+      </div>
+
+      <div className={styles.tagWrapper}>
+        <Tooltip title={
+          `Score: ${cardItem.score}`
+        }>
+          <span className={styles.tag}>{calculateScore(cardItem.score)}</span>
+        </Tooltip>
       </div>
     </div>
   );
