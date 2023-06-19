@@ -1,53 +1,59 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 interface CardProps {
   cardItem: {
-    id: number;
-    title: string;
-    authors: string[];
-    tags: string[];
-    date: string;
-    description: string;
-    url: string;
+    articleId: number;
+    section: string;
+    article: {
+      title: string;
+      authors: string[];
+    };
+    paragraphs: string[];
   };
 }
 
 const Card: React.FC<CardProps> = ({ cardItem }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const search = new URLSearchParams(location.search).get('search');
 
   const getDateYear = (date: string) => {
     const dateObj = new Date(date);
     return dateObj.getFullYear();
   };
 
-  const descriptionFiltered = cardItem.description.length > 350 ? `${cardItem.description.slice(0, 350)}...` : cardItem.description;
+  const descriptionFiltered =
+    cardItem.paragraphs && cardItem.paragraphs.join(' ').length > 350
+      ? `${cardItem.paragraphs.join(' ').slice(0, 350)}...`
+      : (cardItem.paragraphs && cardItem.paragraphs.join(' ')) || '';
 
   const handleCardClick = () => {
-    const articleLink = cardItem.url;
-    if (articleLink) navigate(`/article?url=${articleLink}&search=${cardItem.title}`);
+    navigate(`/article?search=${search}&id=${cardItem.articleId}`);
   };
 
   return (
     <div className={styles.card} onClick={handleCardClick}>
       <div className={styles.cardHead}>
-        <h3>{cardItem.title}</h3>
-        <span>{getDateYear(cardItem.date)}</span>
+        <h3>{cardItem.article.title}</h3>
       </div>
+
       <div className={styles.cardInfo}>
         <p>
-          {cardItem.authors.length > 1 ? "Autores" : "Autor"}:{" "}
-          <span>{cardItem.authors.join(", ")}</span>
-        </p>
-        <p>
-          Palavras chave: 
-            {cardItem.tags.map((tag) => (
-              <span className={styles.tag} key={tag}>{tag}</span>
-            ))}
+          {cardItem.article.authors && cardItem.article.authors.length > 1
+            ? 'Autores'
+            : 'Autor'}
+          :{' '}
+          <span>
+            {(cardItem.article.authors &&
+              cardItem.article.authors.join(', ')) ||
+              ''}
+          </span>
         </p>
       </div>
+
       <div className={styles.cardDescription}>
-        <p>Resumo</p>
+        <h3 className={styles.sectionTitle}>{cardItem.section}</h3>
         <p className={styles.description}>{descriptionFiltered}</p>
       </div>
     </div>

@@ -4,12 +4,28 @@ import WaveTop from "../../assets/wave-top.svg";
 import WaveBottom from "../../assets/wave-bottom.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
   const [error, setError] = useState<string>('');
   const [search, setSearch] = useState<string>('');
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 576);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -38,7 +54,7 @@ const Home: React.FC = () => {
           id="search-input"
           fullWidth
           color="primary"
-          label="Digite a palavra chave que deseja buscar, nos cuidaremos do resto !"
+          label={isSmallScreen ? "Palavra chave" : "Digite a palavra chave que deseja buscar, nos cuidaremos do resto!"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">

@@ -55,3 +55,39 @@
         }
     }
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .wrapper {
+        .slogan {
+            font-size: 0.9rem;
+          }
+        
+          .call {
+            font-size: 0.9rem;
+          }
+      
+          .container {
+              max-width: 90%;
+          }
+    }
+    
+  }
+  
+  /* Responsividade para telas ainda menores */
+  @media screen and (max-width: 576px) {
+    .wrapper {
+        .slogan {
+        font-size: 0.8rem;
+        }
+    
+        .call {
+        font-size: 0.8rem;
+        }
+  }
+}
+
+#search-input {
+    max-width: 90%;
+}

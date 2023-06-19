@@ -2,7 +2,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
-  padding: 10px 20px;
+  padding: 20px 30px;
   box-sizing: border-box;
   color: var(--text);
   background: var(--bg-blue);
@@ -14,7 +14,12 @@
   height: 100% !important;
   max-height: 70vh !important;
 
-  .article-title, .articleBadge-editionMeta-doi-copyLink {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .article-title,
+  .articleBadge-editionMeta-doi-copyLink {
     text-align: center !important;
 
     span {
@@ -22,6 +27,32 @@
     }
   }
 
+  h1 {
+    font-weight: 500;
+    color: var(--main-blue);
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+
+  h3 {
+    font-weight: 500;
+  }
+
+  .sections {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sectionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .articlesActions {

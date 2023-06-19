@@ -20,3 +20,20 @@
     max-width: 300px;
   }
 }
+
+@media screen and (max-width: 768px) {
+
+  .wrapper { 
+    flex-direction: column;
+    height: inherit;
+  }
+  
+
+  .imageContainer {
+    img {
+      width: 175px;
+    }
+    
+  }
+}
+

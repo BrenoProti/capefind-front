@@ -38,3 +38,11 @@
     background-color: var(--main-blue);
   }
 }
+
+@media screen and (max-width: 768px) {
+
+  .results {
+    grid-template-columns: 1fr;
+    height: calc(100vh - 15rem);
+  } 
+}
