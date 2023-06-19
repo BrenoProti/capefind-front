@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 interface CardProps {
   cardItem: {
     articleId: number;
+    score: number;
     section: string;
     article: {
       title: string;
@@ -31,6 +32,8 @@ const Card: React.FC<CardProps> = ({ cardItem }) => {
     <div className={styles.card} onClick={handleCardClick}>
       <div className={styles.cardHead}>
         <h3>{cardItem.article.title}</h3>
+
+        <span>{cardItem.score}</span>
       </div>
 
       <div className={styles.cardInfo}>
